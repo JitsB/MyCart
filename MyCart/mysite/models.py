@@ -7,8 +7,8 @@ class User(models.Model):
     address = models.TextField(max_length = 50)
     email = models.EmailField()
     
-    def __str__(self):
-        return self.label
+    # def __str__(self):
+        # return self.name
         
 class Product(models.Model):
     name = models.CharField(max_length = 20)

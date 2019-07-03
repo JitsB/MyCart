@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import SignUpForm
 from django.contrib.auth import login, authenticate
+from django.core.mail import send_mail
+from django.conf import settings
+from .models import User
+
 
 # Create your views here.
 
@@ -14,10 +18,19 @@ def signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username = username, password = password)
-            login(request, user)
+            # name = form.cleaned_data.get('name')
+            # address = form.cleaned_data.get('address')
+            # email = form.cleaned_data.get('email')
+            # u = User(name = name, address = address, email = email)
+            # u.save()
+            # subject = "Message from MyZon.com"
+            # message = "%s" %(username)
+            # emailFrom = form.cleaned_data.get('email')
+            # emailTo = [settings.EMAIL_HOST_USER]
+            
+            # send_mail(subject,message,emailFrom,emailTo,fail_silently=False)
+            # user = authenticate(username = username, password = password)
+            # login(request, user)
             return redirect('home')
     else:
         form = SignUpForm
