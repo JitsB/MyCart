@@ -10,7 +10,7 @@ from .models import User
 # Create your views here.
 
 def home(request):
-    return render(request,"base.html")
+    return render(request,"home.html")
 
 
 def signup(request):
@@ -36,4 +36,7 @@ def signup(request):
         form = SignUpForm
 
     return render(request, 'signup.html',{'form':form})
+
+def AboutUs(request):
+    return render(request,"AboutUS.html")
 
